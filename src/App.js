@@ -1,9 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 
-import React, {useState} from 'react';
-import AddItem from './components/addItems';
-import DisplayTransation from './components/displayTransaction';
+import React, {useState} from 'react'
+import Home from './components/home';
+import Login from './components/login';
+import SignUp from './components/signup';
+import DisplayTransaction from './components/displayTransaction';
+
+
+
+
+import {BrowserRouter as Router,Routes,
+  Route} from 'react-router-dom'
 
 function App() {
 
@@ -17,19 +25,23 @@ const addTransaction = ((amount, item,transactionType)=>{
   settransaction((items)=>[...item,{
     amount:amount,
     items:item,
-    transactionType,transactionType
+    transactionType:transactionType
   }])
-  console.log(transaction)
 
 })
   return (
-    <div className="container">
-      <DisplayTransation list={transaction}/>
-      <AddItem  add={addTransaction}/>
-     
-      
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Login/>}></Route>
+        <Route path="/sign-up" element={<SignUp/>}></Route>
+      <Route path="/home" element={<Home/>}></Route>
+       
+    
+      </Routes>
+  
+    </Router>
+
+  )
 }
 
 export default App;
