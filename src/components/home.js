@@ -1,15 +1,17 @@
 import AddItem from "./addItems";
-//import DisplayTransation from '//displayTransaction';
+import {DisplayTransaction} from "./displayTransaction"
+import {BudgetBalance} from './balance'
 
 
 function Home(props)
 {
     return (
-        <div >
-      {/*<DisplayTransation list={props.list}/>*/}
-      <AddItem  add={props.add}/>
+        <div className="container">
+            <BudgetBalance/>
+      {/*<DisplayTransaction list={props.transaction}/>*/}
+       <AddItem  add={props.addTransaction}/>
         </div>
-    )
+    );
 }
 export default Home;
 

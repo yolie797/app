@@ -1,0 +1,14 @@
+.balance
+{
+    display: flex;
+    background-color: white;
+    width: 500px;
+    height: 100px;
+    margin-top: 5px;
+}
+.line
+{
+    border-left: 1px solid green;
+    height: 70px;
+    margin-left: 53px;
+}

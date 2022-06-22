@@ -1,7 +1,6 @@
 import React from 'react';
 import  '../css/displayTransaction.css'
 
-
 function  DisplayTransaction(props){
     return (
         <div>

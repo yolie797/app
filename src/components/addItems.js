@@ -1,7 +1,9 @@
 
 import React, {useState} from "react";
 import "../css/add.css";
-import DisplayTransation from "../components/displayTransaction";
+
+import {db} from '../config/firebase';
+import {addDoc, collection} from 'firebase/firestore'
 
 function AddItem (props)
 {
@@ -9,14 +11,30 @@ function AddItem (props)
     const [amount,setAmount]=useState('')
     const [item,setItem]=useState("");
     const [transactionType,settransactionType]=useState("");
+
+
     const add=(()=>{
-        console.log(item)
-        console.log(amount)
-        console.log(transactionType)
-        props.add(amount, item,transactionType);
-    })
+       
+
+        const collectionReF=collection(db,"transaction");
+
+        const transaction=
+        {
+            item:item,
+            amount:amount,
+            transactionType:transactionType,
+        };
+        addDoc(collectionReF,transaction).then(()=>{
+            alert("Added successfully")
+        }).catch((err)=>{
+            console.log(err);
+        })
+        props.add(amount,item,transactionType);
+   
+        })
 
     return(
+
         <div>
             <h1 style={{paddingTop:'5px'}}>Add Transactions</h1>
 <input placeholder="Enter Item" onChange={(e)=>setItem(e.target.value)}/>{" "}<br/>
@@ -28,6 +46,7 @@ function AddItem (props)
 <br></br>
 <button id="btn" onClick={add}>Add</button>
         </div>
+
     )
 }
 
