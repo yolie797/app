@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase'
 
@@ -9,12 +9,12 @@ function SignUp()
     const [email,setEmail]=useState('');
     const [password, setPassword]=useState("");
 
-    let navigate = useNavigate();
+    let history= useHistory();
 
     const Register= ()=>{
         createUserWithEmailAndPassword(auth,email,password).then(()=>{
 
-            navigate('/home');
+            history.push('/home');
         }).catch((error)=>{
             console.log(error);
         })

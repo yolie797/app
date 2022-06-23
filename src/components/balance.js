@@ -1,23 +1,27 @@
-import '..css/balance.css';
+import '../css/balance.css'
 
-function BudgetBalance () 
+function BudgetBalance(props) 
 {
     return (
-        <div>
+        <div style={{marginTop:"5%"}}>
             <h4>Your Balance</h4>
-            <h2>R4000</h2>
+            <h2>R {props.income-props.expense}</h2>
 
             <div className="balance">
                 <div>
                     <h3>Income</h3>
-                    <h3>R12000</h3>
+                    <h3 style={{color:"green"}}>{props.income}</h3>
                 </div>
+
+
                 <div className="line"></div>
                 <div>
                     <h3>Expenses</h3>
-                    <h3 style={{color:"red"}}>8000</h3>
+                    <h3 style={{color:"red"}}>{props.income}</h3>
                 </div>
             </div>
         </div>
     );
 }
+
+export {BudgetBalance};

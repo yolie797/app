@@ -10,7 +10,7 @@ import DisplayTransaction from './components/displayTransaction';
 
 
 
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 
 import {collection,getDocs} from 'firebase/firestore';
 
@@ -39,17 +39,16 @@ const addTransaction = ((amount, item,transactionType)=>{
 })
   return (
     <Router>
-      <Routes>
-        <Route exact path="/" element={<Login/>}></Route>
-        <Route path="/sign-up" element={<SignUp/>}></Route>
-      <Route path="/home" element={<Home/>}></Route>
-       
-    
-      </Routes>
-  
+      <Switch>
+        <Route exact path="/" component={Login}></Route>
+        <Route path="/sign-up" component={SignUp}></Route>
+        <Route path="/home" >
+          <Home list={transaction} add={addTransaction}/>
+        </Route>
+      </Switch>
     </Router>
-
   )
+
 }
 
 export default App;
